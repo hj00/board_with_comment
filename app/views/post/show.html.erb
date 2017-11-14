@@ -1,0 +1,26 @@
+<!--/post/show/2-->
+<!--@post : 2번째 글이 들어와있을 것.-->
+
+<!--/post/show/1-->
+<!--@post : 1번째 글이 들어와있을 것.-->
+
+<h1>게시글 보기</h1>
+제목 : <%= @post.title %><br/>
+내용 : <%= @post.content %>
+<br/>
+<!--<form action="/post/create_comment/<%= @post.id%>" method="post">-->
+<!--    <input type="text" name="content">-->
+<!--    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">-->
+<!--    <button type="submit">댓글작성</button>-->
+<!--</form>-->
+
+<%= form_tag("/post/create_comment/#{@post.id}", method: "post") do %>
+    <%= label_tag(:content, "댓글 : ") %>
+    <%= text_field_tag(:content) %>
+    <br/>
+    <%= submit_tag("댓글작성") %>
+<% end %>
+
+<% @post.comments.each do |c| %>
+    <p><%= c.content %></p>
+<% end %>

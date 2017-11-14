@@ -1,0 +1,17 @@
+<h1>게시글 작성</h1>
+<!--<form action="/post/create" method="post">-->
+<!--    제목 : <input type="text" name="title"><br/>-->
+<!--    내용 : <input type="text" name="content"><br/>-->
+<!--    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">-->
+<!--    <button type="submit">글쓰기</button>-->
+<!--</form>-->
+<!--<br/>-->
+<%= form_tag("/post/create", method: "post") do %>
+    <%= label_tag(:title, "Title : ") %>
+    <%= text_field_tag(:title) %>
+    <br/>
+    <%= label_tag(:content, "Content : ") %>
+    <%= text_field_tag(:content) %>
+    <br/>
+    <%= submit_tag("글쓰기") %>
+<% end %>

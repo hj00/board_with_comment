@@ -1,0 +1,45 @@
+<!--<% @posts.each do |p| %>-->
+<!--<p><%= p.id %>번째 글 : <%= p.title %>-->
+<!--<%= p.user.email %>-->
+<!--<%= p.created_at %>-->
+<!--<a href="/post/show/<%= p.id %>">보기</a></p>-->
+<!--<hr/>-->
+<!--<% end %>-->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>게시글 목록</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col text-right">
+        <button type="button" class="btn btn-outline-primary"><a href="/post/new">게시글 작성</a></button>
+        </div>
+        <table class="table">
+          <thead class="thead-default">
+            <tr>
+              <th>No</th>
+              <th>Title</th>
+              <th>Writer</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |p| %>
+            <tr>
+                <th scope="row"><%= p.id %></th>
+                <td><a href="/post/show/<%= p.id %>"><%= p.title %></a></td>
+                <td><%= p.user.email %></td>
+                <td><%= time_ago_in_words(p.created_at) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+
